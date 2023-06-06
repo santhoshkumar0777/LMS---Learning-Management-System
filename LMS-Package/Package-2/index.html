@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="../../assets/libs/css/newprofile.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <link rel="icon" href="../../assets/images/header-logo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link href="../../assets/vendors/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../courses/courses.css">
+    <link rel="stylesheet" href="../../assets/vendors/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../../assets/vendors/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../../assets/vendors/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="../../assets/vendors/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/charts/c3charts/c3.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../assets/vendors/fonts/flag-icon-css/flag-icon.min.css">
+    <script src="https://kit.fontawesome.com/28d953b416.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+    <script src="https://meritbodhi.co.in/js/connect.js"></script>
+    <link rel="stylesheet" type="text/css" href="newdash.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.js"></script>
+    <title>LMS | Courses</title>
+    <!-- cdns for custom multi select -->
+
+    <style>
+        .savebtn {
+            margin-right: 1rem;
+        }
+        
+        .btns {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <div class="dashboard-header">
+            <nav class="navbar topbar-rr navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="index.html" style="font-size: 23px;">LMS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-fw fa-bell"></i> <span>5</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Name</span>Payment successful
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Name</span>Payment is successful
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Name</span> is successfully paid amount.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle" id="smallProfileImage"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name" id="iName">admin</h5>
+                                    <span class="status"></span><span class="ml-2">
+                                        <empty style="color: rgb(82, 243, 82);">•</empty> Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+
+        <div class="nav-left-sidebar sidebar-white">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="../../dashboard">LMS</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="../Admin/admin.html"><i class="fas fa-chart-pie"></i>Dashboard</a>
+
+                                <li class="nav-item ">
+                                    <a class="nav-link active" href="../courses/index.html"><i class="fas fa-book"></i>Courses</a>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../payment/index.html"><i class="fas fa-credit-card"></i>Payments</a>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../content/index.html"><i class="fas fa-pencil-alt"></i>Content</a>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="../settings/index.html"><i class="fas fa-cog"></i>Settings</a>
+                                            </li>
+                                            <li class="nav-item hi-sh-lg">
+                                                <a class="nav-link" href="#" onclick="logout()"><i class="fas fa-power-off"></i>Logout</a>
+                                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+
+                <div id="cardss" style="display: block;">
+                    <button type="button" class="btn btn-sm btn-primary addibtn" onclick="ifyouclick()" style="margin-left: 6rem;" id="addbtns">
+                    Add New</button>
+                    <div style="display: flex;">
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                            margin-top: 1rem;" onclick="course1()">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">1. Web Development</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;" onclick="course1()">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2. Java</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;" onclick="course1()">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">3. Python</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;" onclick="course1()">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">4. GoLang</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="display: flex;">
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;" onclick="course1()">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">5. Bash Script</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;" onclick="course1()">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">6. Java Script</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Web Development</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 14rem; height: 20rem; margin-left: 2rem; 
+                        margin-top: 1rem;">
+                            <img src="../../online_course.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Web Development</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="addnewcourse" style="display: none;">
+                    <div class="card1" style="display: block;" id="card11">
+                        <!-- <i class="fas fa-arrow-left" style="font-size: 1.2rem; margin-bottom: 1rem; 
+                            cursor: pointer;" onclick="goback()"> -->
+                        </i>
+                        <div>
+                            <h4>New Course</h4>
+                        </div>
+
+                        <div class="cont">
+                            <img src="../../uyo.png" alt="Avatar " class="image" id="coverImg" style="width:100%; object-fit: contain; cursor: pointer;" onclick="coverimg1()">
+                            <div class="middle">
+                                <div class="text">
+                                    <i class="fas fa-upload" onclick="coverimg1()" style="cursor: pointer;      color: black;">
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" name="fileupload " style="display: none; " id="cvrimgupload1">
+                        <div class="cardfirst ">
+                            <!-- style="display: flex; justify-content: space-between;" -->
+                            <div class="thumb "><img src="../../uyo.png " class="thmimg " id="thumbImg "><br><br>
+                                <button type="button " class="btn btn-sm btn-primary " style="margin-left: 4.5rem; " onclick="editfileclickbtn1()">upload</button>
+                            </div>
+                            <input type="file" name="fileupload1" style="display: none;" id="editfileclick1">
+                            <!-- form start -->
+                            <h3 class="ci">Course Information</h3>
+                            <div class="box">
+                                <div class="title">
+                                    <div class="tit" style="width: 20rem;">
+                                        <h3>Title</h3><input type="text" name="t_name" class="form-control titi" placeholder="Course Title">
+                                    </div>
+                                    <div class="cons ">
+                                        <h3 style="margin-top: .5rem; margin-left: 2rem;">Concept
+                                        </h3>
+                                        <input type="text" name="concept" class="form-control cours" style="width:150%; margin-left:2rem" placeholder="Course Concepts">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="descri ">
+                            <h3>Description</h3>
+                            <div class="form-group focused ">
+                                <textarea rows="4 " class="form-control form-control-alternative " name="crsDesc " placeholder="A few words about this course ... "></textarea>
+                            </div>
+
+                            <div>
+                                <!-- style="margin-top: 25px; " -->
+                                <h3>Introduction Video &nbsp; </h3>
+                                <input type="file" class="inpuu " name="crsIntr ">
+                            </div>
+                            <div class="cousr">
+
+                                <div>
+                                    <h3>Course Mode</h3>
+                                    <div class="d-flex">
+                                        <select class="form-control cours" name="crsType">
+                                        
+                                        <option value="Online">Online</option>
+                                        <option value="Live">Live</option>
+                                        <option value="One to One">One to One</option>
+                                      </select><i class="fas fa-plus-square plbtn" style="display:none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="ccat">
+                                    <h3 class="cnal">Course Nationality</h3>
+                                    <div class="d-flex clsa">
+                                        <select class="form-control cours11" name="crsNationality">
+                                        <option value="default" selected>---select---</option>
+                                        <option value="National">National</option>
+                                        <option value="International">International</option>
+                                      </select><i class="fas fa-plus-square plbtn" style="display:none;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cousr111">
+
+                                <div>
+                                    <h3>Course Category</h3>
+                                    <div class="d-flex">
+                                        <select class="form-control cours11" name="maincat">
+                                        <option value="0">Select</option>
+                                        <option value="1">Audi</option>
+                                        <option value="2">BMW</option>
+                                        <option value="3">Citroen</option>
+                                        <option value="4">Ford</option>
+                                        <option value="5">Honda</option>
+                                      </select><i class="fas fa-plus-square plbtn" onclick="ccatonclick()" style="display:none"></i>
+                                    </div>
+                                </div>
+
+                                <div class="ccat11">
+                                    <h3 class="newhh">Course Subcategory</h3>
+                                    <div class="d-flex">
+                                        <div>
+                                            <select class="form-control coursddd" name="subcat">
+                                        <option value="0">Select</option>
+                                        <option value="1">Audi</option>
+                                        <option value="2">BMW</option>
+                                        <option value="3">Citroen</option>
+                                        <option value="4">Ford</option>
+                                        <option value="5">Honda</option>
+                                      </select>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-plus-square plbtn11" onclick="helloworldclick()" style="display:none"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem;" id="selb11">
+                                <h3>Is there any Assessment in this course ?</h3>
+                                <div style="width: 10%;">
+                                    <select class="form-control typeclass" id="selb1" onchange="mtf('selb1','multiplechoice','trueorfalse')" name="selb1">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <br>
+                            <div style="text-align: right;">
+                                <button type="button" class="btn btn-sm btn-primary" id="createCourse">
+                                Create Course</button>
+                                <a href="#courses"><button type="button" class="btn btn-sm btn-primary" style="background-color: #dc3545;" onclick="coursecancel() ">
+                            Cancel</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EDIT COURSE -->
+
+            <div id="editcourse" style="display: none;">
+                <div class="card1">
+                    <!-- <i class="fas fa-arrow-left" style="font-size: 1.2rem; margin-bottom: 1rem; cursor: pointer;"></i> -->
+                    <div style="display: flex; justify-content: space-between; ">
+                        <h4>Course Edit</h4>
+                    </div>
+
+                    <div class="cont ">
+                        <img src="../../online_course.jpeg " alt="Avatar " class="image " id="coverImg " style="width:100% ">
+                        <div class="middle ">
+                            <div class="text ">
+                                <i class="fas fa-upload " onclick="coverimg() " style="cursor: pointer; "></i>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="file" name="fileuploads" style="display: none; " id="cvrimgupload">
+                    <div class="cardfirst ">
+                        <!--style="display: flex; justify-content: space-between; " -->
+                        <div class="thumb "><img src="../../online_course.jpeg " class="thmimg " id="thumbImg "><br><br>
+                            <button type="button " class="btn btn-sm btn-primary " style="margin-left: 4.5rem;" onclick="editfileclickbtn() ">Edit</button>
+                            <input type="file" id="editfileclick" style="display: none;">
+                        </div>
+                        <input type="file " name="fileupload1 " style="display: none; " id="newuppp1 ">
+                        <!-- form start -->
+
+                        <h3 class="ci ">Course Information</h3>
+                        <div class="box ">
+                            <div class="title ">
+                                <div class="tit " style="width: 20rem; ">
+                                    <h3>Title</h3><input type="text " name="t_name " class="form-control titi " value="Web Development">
+                                </div>
+                                <div class="cons ">
+                                    <h3 style="margin-top: .5rem; margin-left: 2rem; ">Concept
+                                    </h3>
+                                    <input type="text " name="concept " class="form-control cours " style="width:150%; margin-left:2rem " value="This course is completely for beginner... ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="descri ">
+                        <h3>Description</h3>
+                        <div class="form-group focused ">
+                            <textarea rows="4 " class="form-control form-control-alternative " name="crsDesc ">This course is completely for beginner so you can learn a very strong basics</textarea>
+                        </div>
+
+                        <div>
+                            <!-- style="margin-top: 25px; " -->
+                            <h3>Introduction Video &nbsp; </h3>
+                            <i class="fas fa-upload" style="cursor: pointer; font-size: 1.5rem;" onclick="inputfileclick()">
+                            <input type="file" id="inputfile" style="display: none;">
+                        </i>
+                        </div>
+
+                        <hr>
+                        <br>
+                        <div class="btns">
+                            <button type="button " class="btn btn-sm btn-primary savebtn" id="createCourse ">
+                        Save</button>
+                            <a href="#courses "><button type="button " class="btn btn-sm btn-primary " style="background-color: #dc3545; " onclick="editcancel() ">
+                        Cancel</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function ifyouclick() {
+            document.getElementById('addnewcourse').style.display = "block";
+            document.getElementById('cardss').style.display = "none";
+            document.getElementById('addbtns').style.display = "none";
+        }
+
+        function coursecancel() {
+            document.getElementById('addnewcourse').style.display = "none";
+            document.getElementById('cardss').style.display = "block";
+            document.getElementById('addbtns').style.display = "block";
+        }
+
+        function course1() {
+            document.getElementById('cardss').style.display = "none";
+            document.getElementById('editcourse').style.display = "block";
+        }
+
+        function editcancel() {
+            document.getElementById('cardss').style.display = "block";
+            document.getElementById('editcourse').style.display = "none";
+        }
+
+        function inputfileclick() {
+            document.getElementById('inputfile').click();
+        }
+
+        function editfileclickbtn1() {
+            document.getElementById('editfileclick1').click();
+        }
+
+        function editfileclickbtn() {
+            document.getElementById('editfileclick').click();
+        }
+
+        function coverimg() {
+            document.getElementById('cvrimgupload').click();
+        }
+
+        function coverimg1() {
+            document.getElementById('cvrimgupload1').click();
+        }
+
+        // function goback() {
+        //     document.getElementById('card11').style.display = "none";
+        //     document.getElementById('addbtns').style.display = "block";
+        //     document.getElementById('cardss').style.display = "block";
+        // }
+    </script>
+    </script>
+    <script src="../../assets/vendors/jquery/jquery-3.3.1.min.js "></script>
+
+    <script src="../../assets/vendors/bootstrap/js/bootstrap.bundle.js "></script>
+
+    <script src="../../assets/vendors/charts/chartist-bundle/chartist.min.js "></script>
+
+</body>
+<!-- primary color : #5e72e4 -->
+
+</html>

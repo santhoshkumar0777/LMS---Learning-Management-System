@@ -1,0 +1,10 @@
+.cardds {
+    margin: 1rem;
+    background-color: #fff;
+    padding: 2rem;
+}
+
+.needcenter {
+    display: flex;
+    justify-content: center;
+}
