@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="../../assets/libs/css/newprofile.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link href="../assets/vendors/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../assets/vendors/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../assets/vendors/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../assets/vendors/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="../assets/vendors/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/vendors/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="../assets/vendors/fonts/flag-icon-css/flag-icon.min.css">
+    <script src="https://kit.fontawesome.com/28d953b416.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" type="text/css" href="payment.css">
+    <title>LMS | Content</title>
+    <!-- cdns for custom multi select -->
+</head>
+
+<body onload="onLoadSetter()">
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar topbar-rr navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="index.html" style="font-size: 23px;">LMS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span>5</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Name</span>Payment successful
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Name</span>Payment is successful
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Name</span> is successfully paid amount.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle" id="smallProfileImage"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name" id="iName">admin</h5>
+                                    <span class="status"></span><span class="ml-2">
+                                        <empty style="color: rgb(82, 243, 82);">•</empty> Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+
+        <div class="nav-left-sidebar sidebar-white">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="../../dashboard">LMS</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="../dashboard/index.html"><i class="fas fa-chart-pie"></i>Dashboard</a>
+                                    
+                            <li class="nav-item">
+                                <a class="nav-link " href="../profile/index.html" ><i class="fas fa-user"></i>Profile</a>
+                                
+                            <li class="nav-item">
+                                <a class="nav-link " href="../courses/index.html"><i class="fas fa-book"></i>Courses</a>
+                                
+                            <li class="nav-item ">
+                                <a class="nav-link" href="../faculty/index.html"><i class="fas fa-chalkboard-teacher"></i>Faculty</a>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="../notification/index.html" ><i class="fas fa-fw fa-bell"></i>Notifications</a>
+                            
+                            <li class="nav-item ">
+                                <a class="nav-link " href="../reviews/index.html" ><i class="fas fa-star"></i>Reviews</a>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#" ><i class="fas fa-credit-card"></i>Payments</a>   
+                    
+                            <li class="nav-item">
+                                <a class="nav-link" href="../settings/index.html" ><i class="fas fa-cog"></i>Settings</a>
+                                 </li>
+                            <li class="nav-item hi-sh-lg">
+                                <a class="nav-link" href="#" onclick="logout()"><i class="fas fa-power-off"></i>Logout</a>
+                                 </li>
+                                </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="cardds">
+                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Courses Revenue</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Payment Gateway</a>
+                        </li>
+                        <!-- <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                        </li> -->
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="d-flex">
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">Web Development</h4>
+                                            <h5 class="mb-1" id="facultyCount">30+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 12,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">Java</h4>
+                                            <h5 class="mb-1" id="facultyCount">40+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 13,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">Machine Learning</h4>
+                                            <h5 class="mb-1" id="facultyCount">130+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 15,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">C Program</h4>
+                                            <h5 class="mb-1" id="facultyCount">80+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 10,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- SECOND -->
+
+                            <div class="d-flex">
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">C++</h4>
+                                            <h5 class="mb-1" id="facultyCount">30+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 2,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">Python</h4>
+                                            <h5 class="mb-1" id="facultyCount">300+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 24,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">Go Lang</h4>
+                                            <h5 class="mb-1" id="facultyCount">20+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 5,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">Linux & Unix</h4>
+                                            <h5 class="mb-1" id="facultyCount">30+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 1,20,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="text-align: center;">
+                                <i class="fas fa-long-arrow-alt-down" style="font-size:2rem; color: #000;"></i>
+                                <h3>Total</h3>
+                            </div>
+
+                            <div class="needcenter">
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="cursor: pointer; ">
+                                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+                                        <div class="card-body">
+                                            <h4 style="color: #5e72e4;">All Courses</h4>
+                                            <h5 class="mb-1" id="facultyCount">1330+ students</h5>
+
+                                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                                                <span><i class="fas fa-rupee-sign"></i> 2,00,000</span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            .2..
+                        </div>
+                        <!-- <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        </script>
+        <script src="../../assets/vendors/jquery/jquery-3.3.1.min.js"></script>
+
+        <script src="../../assets/vendors/bootstrap/js/bootstrap.bundle.js"></script>
+
+        <script src="../../assets/vendors/charts/chartist-bundle/chartist.min.js"></script>
+
+</body>
+<!-- primary color : #5e72e4 -->
+
+</html>
